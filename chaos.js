@@ -80,6 +80,7 @@ function doThing() {
   let mode = selectMode.selectedIndex;
   let num = Number(document.getElementById('numPoints').value);
   let fraction = Number(document.getElementById('fractionInput').value);
+  let pointSize = Number(document.getElementById('pointSize').value);
   // console.log(num);
   let temp = getRandomInt(0, 2);
   let cPlot = [];
@@ -130,6 +131,6 @@ function doThing() {
 
     // console.log(cPlot)
     ctx.fillStyle = color;
-    ctx.fillRect(cPlot[0], cPlot[1], 4, 4);
+    ctx.fillRect(cPlot[0], cPlot[1], pointSize, pointSize);
   }
 };
