@@ -81,9 +81,9 @@ function doThing() {
   let num = Number(document.getElementById('numPoints').value);
   let fraction = Number(document.getElementById('fractionInput').value);
   let pointSize = Number(document.getElementById('pointSize').value);
-  let color1 = document.getElementById('color1').value;
-  let color2 = document.getElementById('color2').value;
-  let color3 = document.getElementById('color3').value;
+  let color1 = '#' + document.getElementById('color1').value;
+  let color2 = '#' + document.getElementById('color2').value;
+  let color3 = '#' + document.getElementById('color3').value;
   // console.log(num);
   let temp = getRandomInt(0, 2);
   let cPlot = [];
