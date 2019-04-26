@@ -3,16 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>CHAOS!</title>
   </head>
   <body style="height: 100%;">
-    Enter number of points: <input id="numPoints" type="text" value="1000"></input>
-    Enter fraction input: (1/x) <input id="fractionInput" type="text" value="2"></input>
+    Enter number of points: <input id="numPoints" type="text" value="1000" />
+    Enter fraction input: (1/x) <input id="fractionInput" type="text" value="2" />
     <select id="selectMode">
       <option value="mode1">x-1 / x</option>
       <option value="mode2">1 / x</option>
     </select>
-    Enter point size: <input type="text" id="pointSize" value="5"></input>
+    Enter point size: <input type="text" id="pointSize" value="5" />
+    Enter color 1: <input type="color" id="color1" value="#FF0000" />
+    Enter color 2: <input type="color" id="color2" value="#228B22" />
+    Enter color 3: <input type="color" id="color3" value="#0000FF" />
     <button id="startButton">Go!</button>
     <button id="noReset">No reset!</button><br>
     <canvas id="chaosGame" width="4000" height="4000" style="border: 1px solid black; height: 90%;"></canvas>

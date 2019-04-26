@@ -81,6 +81,9 @@ function doThing() {
   let num = Number(document.getElementById('numPoints').value);
   let fraction = Number(document.getElementById('fractionInput').value);
   let pointSize = Number(document.getElementById('pointSize').value);
+  let color1 = document.getElementById('color1').value;
+  let color2 = document.getElementById('color2').value;
+  let color3 = document.getElementById('color3').value;
   // console.log(num);
   let temp = getRandomInt(0, 2);
   let cPlot = [];
@@ -105,17 +108,20 @@ function doThing() {
     switch (temp) {
       case 0:
         nPlot = pointA.slice();
-        color = '#FF0000';
+        // color = '#FF0000';
+        color = color1;
         // console.log('A')
         break;
       case 1:
         nPlot = pointB.slice();
-        color = '#228B22';
+        // color = '#228B22';
+        color = color2;
         // console.log('B')
         break;
       case 2:
         nPlot = pointC.slice();
-        color = '#0000FF';
+        // color = '#0000FF';
+        color = color3;
         // console.log('C')
     }
     // console.log(nPlot)
@@ -130,6 +136,7 @@ function doThing() {
     }
 
     // console.log(cPlot)
+    // console.log(color)
     ctx.fillStyle = color;
     ctx.fillRect(cPlot[0], cPlot[1], pointSize, pointSize);
   }
