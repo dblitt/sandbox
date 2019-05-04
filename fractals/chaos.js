@@ -30,9 +30,9 @@ function getRandomInt(min, max) {
 // drawPixel(1, 2, 255, 0, 0, 255);
 // drawPixel(1, 3, 255, 0, 0, 255);
 
-let pointA = [2800, 300];
-let pointB = [400, 2800];
-let pointC = [3500, 3500];
+var pointA = [2800, 300];
+var pointB = [400, 2800];
+var pointC = [3500, 3500];
 
 function reset() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -88,17 +88,17 @@ document.getElementById('putDots').onclick = function() {
   dots();
 }
 function doThing() {
-  let selectMode = document.getElementById('selectMode');
-  let mode = selectMode.selectedIndex;
-  let num = Number(document.getElementById('numPoints').value);
-  let fraction = Number(document.getElementById('fractionInput').value);
-  let pointSize = Number(document.getElementById('pointSize').value);
-  let color1 = '#' + document.getElementById('color1').value;
-  let color2 = '#' + document.getElementById('color2').value;
-  let color3 = '#' + document.getElementById('color3').value;
+  var selectMode = document.getElementById('selectMode');
+  var mode = selectMode.selectedIndex;
+  var num = Number(document.getElementById('numPoints').value);
+  var fraction = Number(document.getElementById('fractionInput').value);
+  var pointSize = Number(document.getElementById('pointSize').value);
+  var color1 = '#' + document.getElementById('color1').value;
+  var color2 = '#' + document.getElementById('color2').value;
+  var color3 = '#' + document.getElementById('color3').value;
   // console.log(num);
-  let temp = getRandomInt(0, 2);
-  let cPlot = [];
+  var temp = getRandomInt(0, 2);
+  var cPlot = [];
   switch (temp) {
     case 0:
       cPlot = pointA.slice();
@@ -110,9 +110,9 @@ function doThing() {
       cPlot = pointC.slice();
   }
   // console.log(cPlot)
-  let nPlot = [];
-  let color = '';
-  for (let i = 0; i < num; i++) {
+  var nPlot = [];
+  var color = '';
+  for (var i = 0; i < num; i++) {
     // console.log(pointA)
     // console.log(pointB);
     // console.log(pointC);
