@@ -30,24 +30,24 @@ function getRandomInt(min, max) {
 // drawPixel(1, 2, 255, 0, 0, 255);
 // drawPixel(1, 3, 255, 0, 0, 255);
 
-// let pointA = [2000, 200];
-let pointB = [400, 2900];
-let pointC = [3600, 2900];
-// let pointC = [0, 0];
-// let pointA = [3000,3000]
-// let pointB = calculateMiddleThree([[1000, 2000],[3000,3000]])[0]
-// let pointC = calculateMiddleThree([[1000, 2000],[3000,3000]])[2]
-// let pointA = calculateMiddleThree([[2000, 300], [400, 2800]])[0]
-// let pointB = calculateMiddleThree([[2000, 300], [400, 2800]])[1]
-// let pointC = calculateMiddleThree([[2000, 300], [400, 2800]])[2]
+// var pointA = [2000, 200];
+var pointB = [400, 2900];
+var pointC = [3600, 2900];
+// var pointC = [0, 0];
+// var pointA = [3000,3000]
+// var pointB = calculateMiddleThree([[1000, 2000],[3000,3000]])[0]
+// var pointC = calculateMiddleThree([[1000, 2000],[3000,3000]])[2]
+// var pointA = calculateMiddleThree([[2000, 300], [400, 2800]])[0]
+// var pointB = calculateMiddleThree([[2000, 300], [400, 2800]])[1]
+// var pointC = calculateMiddleThree([[2000, 300], [400, 2800]])[2]
 
-let iDistance = Math.sqrt(Math.pow(pointB[0] - pointC[0], 2) + Math.pow(pointB[1] - pointC[1], 2));
-let newThing = intersectTwoCircles(pointB[0], pointB[1], iDistance, pointC[0], pointC[1], iDistance);
+var iDistance = Math.sqrt(Math.pow(pointB[0] - pointC[0], 2) + Math.pow(pointB[1] - pointC[1], 2));
+var newThing = intersectTwoCircles(pointB[0], pointB[1], iDistance, pointC[0], pointC[1], iDistance);
 // console.log(newThing[0]);
-let pointA = newThing[0];
+var pointA = newThing[0];
 
-let centroid = [(pointA[0] + pointB[0] + pointC[0]) / 3, (pointA[1] + pointB[1] + pointC[1]) / 3];
-// let centroid = [(2000 + 400 + 3600) / 3, (300 + 2800 + 2800) / 3];
+var centroid = [(pointA[0] + pointB[0] + pointC[0]) / 3, (pointA[1] + pointB[1] + pointC[1]) / 3];
+// var centroid = [(2000 + 400 + 3600) / 3, (300 + 2800 + 2800) / 3];
 // console.log(centroid);
 
 // console.log(calculateMiddleThree([[2000, 300], [400, 2800]]));
@@ -126,24 +126,24 @@ document.getElementById('inputForm').onsubmit = function() {
 //   dots();
 // }
 function doThing() {
-  let num = Number(document.getElementById('nInput').value);
-  let lineWidth = Number(document.getElementById('lineWidth').value);
-  let numVertices = 3 * Math.pow(4, num);
+  var num = Number(document.getElementById('nInput').value);
+  var lineWidth = Number(document.getElementById('lineWidth').value);
+  var numVertices = 3 * Math.pow(4, num);
   // console.log(numVertices);
-  let vertices = new Array(numVertices);
+  var vertices = new Array(numVertices);
   vertices[0] = pointA.slice();
   // vertices = [[2000, 300], [400, 2800], [2000, 2800]];
-  // let lowerBound = 0;
-  // let upperBound = vertices.length - 1;
-  // for (let i = 0; i < num; i++) {
+  // var lowerBound = 0;
+  // var upperBound = vertices.length - 1;
+  // for (var i = 0; i < num; i++) {
   //
   // }
-  let vB =     numVertices / 3;
-  let vC = 2 * numVertices / 3;
+  var vB =     numVertices / 3;
+  var vC = 2 * numVertices / 3;
   vertices[vB] = pointB.slice();
   vertices[vC] = pointC.slice();
   // console.log(vertices);
-  let magicNum1 = numVertices / 3;
+  var magicNum1 = numVertices / 3;
   if (num > 0) {
     // populate(vertices, num, 0, magicNum1);
     // populate(vertices, num, magicNum1, magicNum1 * 2);
@@ -162,7 +162,7 @@ function doThing() {
   ctx.beginPath();
   // ctx.moveTo(pointA[0], pointA[1]);
   ctx.moveTo(vertices[0][0], vertices[0][1]);
-  for (let i = 0; i < vertices.length; i++) {
+  for (var i = 0; i < vertices.length; i++) {
     ctx.lineTo(vertices[i][0], vertices[i][1]);
   }
   ctx.lineTo(vertices[0][0], vertices[0][1]);
@@ -171,33 +171,33 @@ function doThing() {
 
 function populate(vertices, num, lowerBound, upperBound, oppVert) {
   if (num === 1) {
-    let calcThing;
+    var calcThing;
     if (upperBound >= vertices.length) {
       calcThing = 0;
     } else {
       calcThing = upperBound;
     }
-    let temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert);
-    let midpoint = ( (upperBound - lowerBound) / 2) + lowerBound;
+    var temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert);
+    var midpoint = ( (upperBound - lowerBound) / 2) + lowerBound;
     vertices[midpoint] = temp[1];
-    let midpointLower = ( (midpoint - lowerBound) / 2) + lowerBound;
+    var midpointLower = ( (midpoint - lowerBound) / 2) + lowerBound;
     vertices[midpointLower] = temp[0];
-    let midpointUpper = ( (upperBound - midpoint) / 2) + midpoint;
+    var midpointUpper = ( (upperBound - midpoint) / 2) + midpoint;
     vertices[midpointUpper] = temp[2];
   } else {
     // begin copied from above
-    let calcThing;
+    var calcThing;
     if (upperBound >= vertices.length) {
       calcThing = 0;
     } else {
       calcThing = upperBound;
     }
-    let temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert);
-    let midpoint = ( (upperBound - lowerBound) / 2) + lowerBound;
+    var temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert);
+    var midpoint = ( (upperBound - lowerBound) / 2) + lowerBound;
     vertices[midpoint] = temp[1];
-    let midpointLower = ( (midpoint - lowerBound) / 2) + lowerBound;
+    var midpointLower = ( (midpoint - lowerBound) / 2) + lowerBound;
     vertices[midpointLower] = temp[0];
-    let midpointUpper = ( (upperBound - midpoint) / 2) + midpoint;
+    var midpointUpper = ( (upperBound - midpoint) / 2) + midpoint;
     vertices[midpointUpper] = temp[2];
     // end copied from above
 
@@ -211,34 +211,34 @@ function populate(vertices, num, lowerBound, upperBound, oppVert) {
 
 function calculateMiddleThree(endPoints, oppVert) {
   // endpoints are like [[10, 20], [40, 30]]
-  let final = [[],[],[]];
+  var final = [[],[],[]];
   final[2][0] = (endPoints[0][0] * (1 / 3)) + (endPoints[1][0] * (2 / 3));
   final[2][1] = (endPoints[0][1] * (1 / 3)) + (endPoints[1][1] * (2 / 3));
   final[0][0] = (endPoints[0][0] * (2 / 3)) + (endPoints[1][0] * (1 / 3));
   final[0][1] = (endPoints[0][1] * (2 / 3)) + (endPoints[1][1] * (1 / 3));
 
-  let temp = [];
+  var temp = [];
   temp[0] = (endPoints[0][0] * (1 / 2)) + (endPoints[1][0] * (1 / 2));
   temp[1] = (endPoints[0][1] * (1 / 2)) + (endPoints[1][1] * (1 / 2));
 
-  let s = Math.sqrt(Math.pow(final[2][0] - final[0][0], 2) + Math.pow(final[2][1] - final[0][1], 2));
-  let a = final[0][0];
-  let b = final[0][1];
-  let c = final[2][0];
-  let d = final[2][1];
-  // let t = Math.pow(c, 2) + Math.pow(d, 2) - Math.pow(a, 2) - Math.pow(b, 2);
+  var s = Math.sqrt(Math.pow(final[2][0] - final[0][0], 2) + Math.pow(final[2][1] - final[0][1], 2));
+  var a = final[0][0];
+  var b = final[0][1];
+  var c = final[2][0];
+  var d = final[2][1];
+  // var t = Math.pow(c, 2) + Math.pow(d, 2) - Math.pow(a, 2) - Math.pow(b, 2);
   // console.log(t);
-  // let x = ((Math.pow(2 * d - 2 * b, 2) * 2 * a - 2 * t * (2 * c - 2 * a)) - Math.sqrt(Math.pow((-Math.pow((2 * d - 2 * b), 2) * 2 * a - 2 * t * (2 * c - 2 * a)), 2) - 4 * (Math.pow(2 * d - 2 * b, 2) + Math.pow(2 * c - 2 * a, 2)) * (Math.pow(t, 2) - (Math.pow(s, 2) - Math.pow(a, 2) - Math.pow(b, 2)) * (Math.pow(2 * d - 2 * b, 2))))) / (2 * (Math.pow((2 * d - 2 * b), 2) + Math.pow((2 * c - 2 * a), 2)));
+  // var x = ((Math.pow(2 * d - 2 * b, 2) * 2 * a - 2 * t * (2 * c - 2 * a)) - Math.sqrt(Math.pow((-Math.pow((2 * d - 2 * b), 2) * 2 * a - 2 * t * (2 * c - 2 * a)), 2) - 4 * (Math.pow(2 * d - 2 * b, 2) + Math.pow(2 * c - 2 * a, 2)) * (Math.pow(t, 2) - (Math.pow(s, 2) - Math.pow(a, 2) - Math.pow(b, 2)) * (Math.pow(2 * d - 2 * b, 2))))) / (2 * (Math.pow((2 * d - 2 * b), 2) + Math.pow((2 * c - 2 * a), 2)));
   // console.log(x);
   // console.log(s);
-  let newSet = intersectTwoCircles(a, b, s, c, d, s);
+  var newSet = intersectTwoCircles(a, b, s, c, d, s);
   // console.log(newSet);
   // final[1] = newSet[0];
-  // let d1 = Math.sqrt(Math.pow(centroid[0] - newSet[0][0], 2) + Math.pow(centroid[1] - newSet[0][1], 2));
-  // let d2 = Math.sqrt(Math.pow(centroid[0] - newSet[1][0], 2) + Math.pow(centroid[1] - newSet[1][1], 2));
+  // var d1 = Math.sqrt(Math.pow(centroid[0] - newSet[0][0], 2) + Math.pow(centroid[1] - newSet[0][1], 2));
+  // var d2 = Math.sqrt(Math.pow(centroid[0] - newSet[1][0], 2) + Math.pow(centroid[1] - newSet[1][1], 2));
   // console.log(oppVert);
-  let d1 = Math.sqrt(Math.pow(oppVert[0] - newSet[0][0], 2) + Math.pow(oppVert[1] - newSet[0][1], 2));
-  let d2 = Math.sqrt(Math.pow(oppVert[0] - newSet[1][0], 2) + Math.pow(oppVert[1] - newSet[1][1], 2));
+  var d1 = Math.sqrt(Math.pow(oppVert[0] - newSet[0][0], 2) + Math.pow(oppVert[1] - newSet[0][1], 2));
+  var d2 = Math.sqrt(Math.pow(oppVert[0] - newSet[1][0], 2) + Math.pow(oppVert[1] - newSet[1][1], 2));
   // console.log('d1 ' + d1);
   // console.log('d2 ' + d2);
   if (d1 > d2) {
@@ -294,16 +294,16 @@ function area(x1, y1, x2, y2, x3, y3) {
 function isInside(x1, y1, x2, y2, x3, y3, x, y)
 {
    /* Calculate area of triangle ABC */
-   let a = area (x1, y1, x2, y2, x3, y3);
+   var a = area (x1, y1, x2, y2, x3, y3);
 
    /* Calculate area of triangle PBC */
-   let a1 = area (x, y, x2, y2, x3, y3);
+   var a1 = area (x, y, x2, y2, x3, y3);
 
    /* Calculate area of triangle PAC */
-   let a2 = area (x1, y1, x, y, x3, y3);
+   var a2 = area (x1, y1, x, y, x3, y3);
 
    /* Calculate area of triangle PAB */
-   let a3 = area (x1, y1, x2, y2, x, y);
+   var a3 = area (x1, y1, x2, y2, x, y);
 
    /* Check if sum of A1, A2 and A3 is same as A */
    return (a == a1 + a2 + a3);
