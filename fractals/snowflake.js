@@ -43,12 +43,12 @@ let pointC = [3600, 2900];
 
 let iDistance = Math.sqrt(Math.pow(pointB[0] - pointC[0], 2) + Math.pow(pointB[1] - pointC[1], 2));
 let newThing = intersectTwoCircles(pointB[0], pointB[1], iDistance, pointC[0], pointC[1], iDistance);
-console.log(newThing[0]);
+// console.log(newThing[0]);
 let pointA = newThing[0];
 
 let centroid = [(pointA[0] + pointB[0] + pointC[0]) / 3, (pointA[1] + pointB[1] + pointC[1]) / 3];
 // let centroid = [(2000 + 400 + 3600) / 3, (300 + 2800 + 2800) / 3];
-console.log(centroid);
+// console.log(centroid);
 
 // console.log(calculateMiddleThree([[2000, 300], [400, 2800]]));
 
@@ -105,7 +105,12 @@ dots();
 // drawPixel(500, 200, 255, 0, 0, 255);
 // updateCanvas();
 
-document.getElementById('startButton').onclick = function() {
+// document.getElementById('startButton').onclick = function() {
+//   reset();
+//   dots();
+//   doThing();
+// };
+document.getElementById('inputForm').onsubmit = function() {
   reset();
   dots();
   doThing();
@@ -124,7 +129,7 @@ function doThing() {
   let num = Number(document.getElementById('nInput').value);
   let lineWidth = Number(document.getElementById('lineWidth').value);
   let numVertices = 3 * Math.pow(4, num);
-  console.log(numVertices);
+  // console.log(numVertices);
   let vertices = new Array(numVertices);
   vertices[0] = pointA.slice();
   // vertices = [[2000, 300], [400, 2800], [2000, 2800]];
@@ -144,13 +149,14 @@ function doThing() {
     // populate(vertices, num, magicNum1, magicNum1 * 2);
     // populate(vertices, num, magicNum1 * 2, magicNum1 * 3);
 
-    console.log('1: ' + vertices[magicNum1 * 2]);
-    console.log('2: ' + vertices[0]);
-    console.log('3: ' + vertices[magicNum1]);
+    // console.log('1: ' + vertices[magicNum1 * 2]);
+    // console.log('2: ' + vertices[0]);
+    // console.log('3: ' + vertices[magicNum1]);
     populate(vertices, num, 0, magicNum1, vertices[magicNum1 * 2]);
     populate(vertices, num, magicNum1, magicNum1 * 2, vertices[0]);
     populate(vertices, num, magicNum1 * 2, magicNum1 * 3, vertices[magicNum1]);
   }
+  // console.log(vertices);
   ctx.strokeStyle = '#000000';
   ctx.lineWidth = lineWidth;
   ctx.beginPath();
@@ -226,15 +232,15 @@ function calculateMiddleThree(endPoints, oppVert) {
   // console.log(x);
   // console.log(s);
   let newSet = intersectTwoCircles(a, b, s, c, d, s);
-  console.log(newSet);
+  // console.log(newSet);
   // final[1] = newSet[0];
   // let d1 = Math.sqrt(Math.pow(centroid[0] - newSet[0][0], 2) + Math.pow(centroid[1] - newSet[0][1], 2));
   // let d2 = Math.sqrt(Math.pow(centroid[0] - newSet[1][0], 2) + Math.pow(centroid[1] - newSet[1][1], 2));
-  console.log(oppVert);
+  // console.log(oppVert);
   let d1 = Math.sqrt(Math.pow(oppVert[0] - newSet[0][0], 2) + Math.pow(oppVert[1] - newSet[0][1], 2));
   let d2 = Math.sqrt(Math.pow(oppVert[0] - newSet[1][0], 2) + Math.pow(oppVert[1] - newSet[1][1], 2));
-  console.log('d1 ' + d1);
-  console.log('d2 ' + d2);
+  // console.log('d1 ' + d1);
+  // console.log('d2 ' + d2);
   if (d1 > d2) {
     final[1] = newSet[0];
   } else {
