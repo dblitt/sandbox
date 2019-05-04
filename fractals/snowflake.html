@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="height: 100%;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js" integrity="sha256-CJWfUCeP3jLdUMVNUll6yQx37gh9AKmXTRxvRf7jzro=" crossorigin="anonymous"></script>
+    <title>Koch Snowflake</title>
+  </head>
+  <body style="height: 100%;">
+    Enter n: <input id="nInput" type="text" value="1" />
+    <!-- Enter fraction input: (1/x) <input id="fractionInput" type="text" value="2" /> -->
+    <!-- <select id="selectMode"> -->
+      <!-- <option value="mode1">x-1 / x</option> -->
+      <!-- <option value="mode2">1 / x</option> -->
+    <!-- </select> -->
+    Enter line width: <input type="text" id="lineWidth" value="5" />
+    <!-- Enter color 1: <input class="jscolor" id="color1" value="#FF0000" /> -->
+    <!-- Enter color 2: <input class="jscolor" id="color2" value="#228B22" /> -->
+    <!-- Enter color 3: <input class="jscolor" id="color3" value="#0000FF" /> -->
+    <button id="startButton">Go!</button>
+    <!-- <button id="noReset">No reset!</button> -->
+    <!-- <button id="noDots">No dots!</button> -->
+    <!-- <button id="putDots">Put dots!</button> -->
+    <br />
+    <canvas id="snowflakeCanvas" width="4000" height="4000" style="border: 1px solid black; height: 90%;"></canvas>
+    <script src="snowflake.js"></script>
+  </body>
+</html>

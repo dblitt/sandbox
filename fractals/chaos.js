@@ -36,6 +36,9 @@ let pointC = [3500, 3500];
 
 function reset() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function dots() {
   ctx.fillStyle = "#000000";
   // ctx.fillRect(495, 95, 11, 11);
   ctx.fillRect(pointA[0] - 10, pointA[1] - 10, 22, 22);
@@ -58,6 +61,7 @@ function reset() {
 // ctx.fillRect(pointC[0], pointC[1], 1, 1);
 
 reset();
+dots();
 
 // ctx.fillStyle = "#000000";
 // ctx.fillRect(45, 495, 11, 11);
@@ -70,11 +74,19 @@ reset();
 
 document.getElementById('startButton').onclick = function() {
   reset();
+  dots();
   doThing();
 };
 document.getElementById('noReset').onclick = function() {
   doThing();
 };
+document.getElementById('noDots').onclick = function() {
+  reset();
+  doThing();
+}
+document.getElementById('putDots').onclick = function() {
+  dots();
+}
 function doThing() {
   let selectMode = document.getElementById('selectMode');
   let mode = selectMode.selectedIndex;
