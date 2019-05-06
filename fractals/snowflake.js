@@ -126,8 +126,11 @@ document.getElementById('inputForm').onsubmit = function() {
 //   dots();
 // }
 function doThing() {
+  var selectMode = document.getElementById('selectMode');
   var num = Number(document.getElementById('nInput').value);
   var lineWidth = Number(document.getElementById('lineWidth').value);
+  var mode = selectMode.selectedIndex;
+  console.log(mode);
   var numVertices = 3 * Math.pow(4, num);
   // console.log(numVertices);
   var vertices = new Array(numVertices);
@@ -152,9 +155,9 @@ function doThing() {
     // console.log('1: ' + vertices[magicNum1 * 2]);
     // console.log('2: ' + vertices[0]);
     // console.log('3: ' + vertices[magicNum1]);
-    populate(vertices, num, 0, magicNum1, vertices[magicNum1 * 2]);
-    populate(vertices, num, magicNum1, magicNum1 * 2, vertices[0]);
-    populate(vertices, num, magicNum1 * 2, magicNum1 * 3, vertices[magicNum1]);
+    populate(vertices, num, 0, magicNum1, vertices[magicNum1 * 2], mode);
+    populate(vertices, num, magicNum1, magicNum1 * 2, vertices[0], mode);
+    populate(vertices, num, magicNum1 * 2, magicNum1 * 3, vertices[magicNum1], mode);
   }
   // console.log(vertices);
   ctx.strokeStyle = '#000000';
@@ -169,7 +172,7 @@ function doThing() {
   ctx.stroke();
 };
 
-function populate(vertices, num, lowerBound, upperBound, oppVert) {
+function populate(vertices, num, lowerBound, upperBound, oppVert, mode) {
   if (num === 1) {
     var calcThing;
     if (upperBound >= vertices.length) {
@@ -177,7 +180,7 @@ function populate(vertices, num, lowerBound, upperBound, oppVert) {
     } else {
       calcThing = upperBound;
     }
-    var temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert);
+    var temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert, mode);
     var midpoint = ( (upperBound - lowerBound) / 2) + lowerBound;
     vertices[midpoint] = temp[1];
     var midpointLower = ( (midpoint - lowerBound) / 2) + lowerBound;
@@ -192,7 +195,7 @@ function populate(vertices, num, lowerBound, upperBound, oppVert) {
     } else {
       calcThing = upperBound;
     }
-    var temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert);
+    var temp = calculateMiddleThree([vertices[lowerBound], vertices[calcThing]], oppVert, mode);
     var midpoint = ( (upperBound - lowerBound) / 2) + lowerBound;
     vertices[midpoint] = temp[1];
     var midpointLower = ( (midpoint - lowerBound) / 2) + lowerBound;
@@ -202,14 +205,14 @@ function populate(vertices, num, lowerBound, upperBound, oppVert) {
     // end copied from above
 
     // now time for the recursive part
-    populate(vertices, num - 1, lowerBound, midpointLower, oppVert);
-    populate(vertices, num - 1, midpointLower, midpoint, vertices[midpointUpper]);
-    populate(vertices, num - 1, midpoint, midpointUpper, vertices[midpointLower]);
-    populate(vertices, num - 1, midpointUpper, upperBound, oppVert);
+    populate(vertices, num - 1, lowerBound, midpointLower, oppVert, mode);
+    populate(vertices, num - 1, midpointLower, midpoint, vertices[midpointUpper], mode);
+    populate(vertices, num - 1, midpoint, midpointUpper, vertices[midpointLower], mode);
+    populate(vertices, num - 1, midpointUpper, upperBound, oppVert, mode);
   }
 }
 
-function calculateMiddleThree(endPoints, oppVert) {
+function calculateMiddleThree(endPoints, oppVert, mode) {
   // endpoints are like [[10, 20], [40, 30]]
   var final = [[],[],[]];
   final[2][0] = (endPoints[0][0] * (1 / 3)) + (endPoints[1][0] * (2 / 3));
@@ -241,10 +244,18 @@ function calculateMiddleThree(endPoints, oppVert) {
   var d2 = Math.sqrt(Math.pow(oppVert[0] - newSet[1][0], 2) + Math.pow(oppVert[1] - newSet[1][1], 2));
   // console.log('d1 ' + d1);
   // console.log('d2 ' + d2);
-  if (d1 > d2) {
-    final[1] = newSet[0];
+  if (mode === 0) {
+    if (d1 > d2) {
+      final[1] = newSet[0];
+    } else {
+      final[1] = newSet[1];
+    }
   } else {
-    final[1] = newSet[1];
+    if (d1 > d2) {
+      final[1] = newSet[1];
+    } else {
+      final[1] = newSet[0];
+    }
   }
 
   return final;

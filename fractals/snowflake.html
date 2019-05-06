@@ -10,19 +10,19 @@
     <form id="inputForm" action="javascript:void(0);">
       Enter n: <input id="nInput" type="text" value="1" pattern="^[0-9]*$" title="Enter an integer >= 0" />
       <!-- Enter fraction input: (1/x) <input id="fractionInput" type="text" value="2" /> -->
-      <!-- <select id="selectMode"> -->
-        <!-- <option value="mode1">x-1 / x</option> -->
-        <!-- <option value="mode2">1 / x</option> -->
-        <!-- </select> -->
-        Enter line width: <input type="text" id="lineWidth" value="5" pattern="^[0-9]*$" title="Enter an integer >= 0" />
-        <!-- Enter color 1: <input class="jscolor" id="color1" value="#FF0000" /> -->
-        <!-- Enter color 2: <input class="jscolor" id="color2" value="#228B22" /> -->
-        <!-- Enter color 3: <input class="jscolor" id="color3" value="#0000FF" /> -->
-        <!-- <button id="startButton">Go!</button> -->
-        <input type="submit" value="Go!" />
-        <!-- <button id="noReset">No reset!</button> -->
-        <!-- <button id="noDots">No dots!</button> -->
-        <!-- <button id="putDots">Put dots!</button> -->
+      <select id="selectMode">
+        <option value="mode1">Outside</option>
+        <option value="mode2">Inside</option>
+      </select>
+      Enter line width: <input type="text" id="lineWidth" value="5" pattern="^[0-9]*$" title="Enter an integer >= 0" />
+      <!-- Enter color 1: <input class="jscolor" id="color1" value="#FF0000" /> -->
+      <!-- Enter color 2: <input class="jscolor" id="color2" value="#228B22" /> -->
+      <!-- Enter color 3: <input class="jscolor" id="color3" value="#0000FF" /> -->
+      <!-- <button id="startButton">Go!</button> -->
+      <input type="submit" value="Go!" />
+      <!-- <button id="noReset">No reset!</button> -->
+      <!-- <button id="noDots">No dots!</button> -->
+      <!-- <button id="putDots">Put dots!</button> -->
     </form>
     <!-- <br /> -->
     <canvas id="snowflakeCanvas" width="4000" height="4000" style="border: 1px solid black; height: 90%;"></canvas>
