@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Handwarmer Lab</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    Salt Name <input type="text" id="salt-name" value=""><br />
+    Water Vol <input type="text" id="water-vol" value=""><br />
+    \(T_0\) <input type="text" id="initial-temp" value=""><br />
+    \(m_{\text{salt}}\) <input type="text" id="m-salt" value=""><br />
+    \(T_{\text{final}}\) <input type="text" id="final-temp" value=""><br />
+    \(C_{\text{cal}}\) <input type="text" id="cal-const" value=""><br />
+    Molar Mass <input type="text" id="molar-mass" value=""><br />
+    $/kg <input type="text" id="dollars-kg" value=""><br />
+    <button onclick="doTheThing();" type="button" name="compute">Do the thing!</button>
+    <p><section id="output"></section></p>
+    <script type="text/javascript">
+
+function doTheThing() {
+  let c = 4.184;
+  let saltName = '\\text{' + document.getElementById('salt-name').value + '}';
+  let waterVol = Number(document.getElementById('water-vol').value);
+  let initialTemp = Number(document.getElementById('initial-temp').value);
+  let mSalt = Number(document.getElementById('m-salt').value);
+  let finalTemp = Number(document.getElementById('final-temp').value);
+  let calConstant = Number(document.getElementById('cal-const').value);
+  let molarMass = Number(document.getElementById('molar-mass').value);
+  let dolperkg = Number(document.getElementById('dollars-kg').value);
+
+  let qaq = (waterVol + mSalt) * c * (finalTemp - initialTemp);
+  let qcal = (finalTemp - initialTemp) * calConstant;
+  let qsoln = -(qaq + qcal);
+  let mols = mSalt * (1 / molarMass);
+  let hrxnmol = (qsoln / 1000) / mols;
+  let hrxnkg = (qsoln / 1000) / (mSalt / 1000);
+  let dolperkj = hrxnkg / dolperkg;
+
+  document.getElementById('output').innerHTML = '\\(q_{aq} = m \\cdot c \\cdot \\Delta T = (' + waterVol + 'mL \\cdot \\frac{1g}{1mL} + ' + mSalt + 'g) \\cdot (' + c + '\\frac{J}{g ^{\\circ}C}) \\cdot (' + finalTemp + '^{\\circ} C - ' + initialTemp + '^{\\circ} C) = ' + p(qaq) + 'J' + '\\)' + '<br />';
+  document.getElementById('output').innerHTML += '\\(q_{cal} = \\Delta T \\cdot C_{cal} = (' + finalTemp + '^{\\circ}C - ' + initialTemp + '^{\\circ} C) \\cdot (' + calConstant + '\\frac{J}{^{\\circ} C}) = ' + p(qcal) + 'J\\)' + '<br>';
+  document.getElementById('output').innerHTML += '\\(q_{soln} = -(q_{aq} + q_{cal}) = ' + p(qsoln) + 'J = ' + p((qsoln / 1000)) + 'kJ \\)' + '<br>';
+  document.getElementById('output').innerHTML += '\\(' + mSalt + 'g ' + saltName + '\\cdot \\frac{1 mol ' + saltName + '}{' + molarMass + 'g ' + saltName + '} = ' + p(mols) + 'mol ' + saltName + '\\)<br>';
+  document.getElementById('output').innerHTML += '\\(\\Delta H_{rxn} = \\frac{' + p((qsoln / 1000)) + 'kJ}{' + p(mols) + 'mol ' + saltName + '} = ' + p(hrxnmol) + '\\frac{kJ}{mol} = \\frac{' + p((qsoln / 1000)) + 'kJ}{' + p((mSalt / 1000)) + 'kg} = ' + p(hrxnkg) + '\\frac{kJ}{kg}\\)<br>';
+  document.getElementById('output').innerHTML += '\\(\\frac{' + p(hrxnkg) + '\\frac{kJ}{kg}}{' + p(dolperkg) + '\\frac{$}{kg}} = ' + p(dolperkj) + '\\frac{kJ}{$}\\)<br>';
+
+  MathJax.typeset();
+}
+
+function p(thing) {
+  return Number.parseFloat(thing).toPrecision(5);
+}
+
+    </script>
+  </body>
+</html>
